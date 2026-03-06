@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 // Target: March 27, 2026 09:00 PM IST = March 27 15:30 UTC
 const TARGET_DATE = new Date("2026-03-27T15:30:00Z");
@@ -99,7 +100,8 @@ export default function CountdownSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 px-4"
+      id="countdown"
+      className="relative min-h-[320px] flex items-center justify-center bg-black bg-opacity-80 overflow-hidden"
       style={{
         zIndex: 1,
         background: "rgba(26, 0, 48, 0.85)",
@@ -108,96 +110,111 @@ export default function CountdownSection() {
         backdropFilter: "blur(4px)",
       }}
     >
-      {/* Title */}
-      <h2
-        className="font-pixel text-center mb-12"
-        style={{
-          fontSize: "clamp(0.5rem, 2vw, 0.9rem)",
-          color: "#00ffff",
-          letterSpacing: "3px",
-          textShadow: "0 0 20px rgba(0,255,255,0.5)",
-        }}
-      >
-        ⏳ TIME UNTIL EXPERIMENT BEGINS
-      </h2>
+      {/* Timer content shifted left */}
+      <div className="relative z-10 flex-1 pr-32">
+        {/* Title */}
+        <h2
+          className="font-pixel text-center mb-12"
+          style={{
+            fontSize: "clamp(0.5rem, 2vw, 0.9rem)",
+            color: "#00ffff",
+            letterSpacing: "3px",
+            textShadow: "0 0 20px rgba(0,255,255,0.5)",
+          }}
+        >
+          ⏳ TIME UNTIL EXPERIMENT BEGINS
+        </h2>
 
-      {/* Countdown grid */}
-      <div className="flex justify-center items-center gap-4 flex-wrap">
-        {units.map((unit, i) => (
-          <div key={unit.key} className="flex items-center gap-4">
-            {/* Box */}
-            <div
-              className="flex flex-col items-center"
-              style={{ minWidth: "clamp(70px, 15vw, 120px)" }}
-            >
+        {/* Countdown grid */}
+        <div className="flex justify-center items-center gap-4 flex-wrap">
+          {units.map((unit, i) => (
+            <div key={unit.key} className="flex items-center gap-4">
+              {/* Box */}
               <div
-                className="pixel-border flex items-center justify-center"
-                style={{
-                  width: "clamp(70px, 15vw, 120px)",
-                  height: "clamp(70px, 15vw, 120px)",
-                  background: "rgba(0,0,0,0.6)",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
+                className="flex flex-col items-center"
+                style={{ minWidth: "clamp(70px, 15vw, 120px)" }}
               >
-                {/* Digit */}
                 <div
-                  ref={unit.refs[0]}
-                  className="font-pixel countdown-digit"
+                  className="pixel-border flex items-center justify-center"
                   style={{
-                    fontSize: "clamp(1.5rem, 5vw, 3rem)",
-                    color: "#ff6b00",
-                    textShadow: "0 0 15px rgba(255,107,0,0.7)",
-                    willChange: "transform, opacity",
+                    width: "clamp(70px, 15vw, 120px)",
+                    height: "clamp(70px, 15vw, 120px)",
+                    background: "rgba(0,0,0,0.6)",
+                    position: "relative",
+                    overflow: "hidden",
                   }}
                 >
-                  {pad(timeLeft[unit.key])}
+                  {/* Digit */}
+                  <div
+                    ref={unit.refs[0]}
+                    className="font-pixel countdown-digit"
+                    style={{
+                      fontSize: "clamp(1.5rem, 5vw, 3rem)",
+                      color: "#ffffff",
+                      textShadow: "0 0 15px rgba(255, 255, 255, 0.7)",
+                      willChange: "transform, opacity",
+                    }}
+                  >
+                    {pad(timeLeft[unit.key])}
+                  </div>
+
+                  {/* Corner decorations */}
+                  <span className="absolute top-1 left-1 text-[8px]" style={{ color: "#ff6b00", opacity: 0.5 }}>▪</span>
+                  <span className="absolute top-1 right-1 text-[8px]" style={{ color: "#ff6b00", opacity: 0.5 }}>▪</span>
+                  <span className="absolute bottom-1 left-1 text-[8px]" style={{ color: "#ff6b00", opacity: 0.5 }}>▪</span>
+                  <span className="absolute bottom-1 right-1 text-[8px]" style={{ color: "#ff6b00", opacity: 0.5 }}>▪</span>
                 </div>
 
-                {/* Corner decorations */}
-                <span className="absolute top-1 left-1 text-[8px]" style={{ color: "#ff6b00", opacity: 0.5 }}>▪</span>
-                <span className="absolute top-1 right-1 text-[8px]" style={{ color: "#ff6b00", opacity: 0.5 }}>▪</span>
-                <span className="absolute bottom-1 left-1 text-[8px]" style={{ color: "#ff6b00", opacity: 0.5 }}>▪</span>
-                <span className="absolute bottom-1 right-1 text-[8px]" style={{ color: "#ff6b00", opacity: 0.5 }}>▪</span>
+                <span
+                  className="font-pixel mt-3 tracking-widest"
+                  style={{
+                    fontSize: "clamp(0.35rem, 1vw, 0.55rem)",
+                    color: "#e8e8ff",
+                    opacity: 0.6,
+                  }}
+                >
+                  {unit.label}
+                </span>
               </div>
 
-              <span
-                className="font-pixel mt-3 tracking-widest"
-                style={{
-                  fontSize: "clamp(0.35rem, 1vw, 0.55rem)",
-                  color: "#e8e8ff",
-                  opacity: 0.6,
-                }}
-              >
-                {unit.label}
-              </span>
+              {/* Separator */}
+              {i < units.length - 1 && (
+                <div
+                  className="font-pixel self-start mt-4"
+                  style={{
+                    fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
+                    color: "#ff00ff",
+                    textShadow: "0 0 10px #ff00ff",
+                    animation: "cursorBlink 1s step-end infinite",
+                  }}
+                >
+                  :
+                </div>
+              )}
             </div>
+          ))}
+        </div>
 
-            {/* Separator */}
-            {i < units.length - 1 && (
-              <div
-                className="font-pixel self-start mt-4"
-                style={{
-                  fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
-                  color: "#ff00ff",
-                  textShadow: "0 0 10px #ff00ff",
-                  animation: "cursorBlink 1s step-end infinite",
-                }}
-              >
-                :
-              </div>
-            )}
-          </div>
-        ))}
+        {/* Sub label */}
+        <p
+          className="font-vt323 text-center mt-8 tracking-widest"
+          style={{ fontSize: "clamp(1rem, 2.5vw, 1.4rem)", color: "#ff9500", opacity: 0.7 }}
+        >
+          MARCH 27, 2026 — 9:00 PM IST
+        </p>
       </div>
 
-      {/* Sub label */}
-      <p
-        className="font-vt323 text-center mt-8 tracking-widest"
-        style={{ fontSize: "clamp(1rem, 2.5vw, 1.4rem)", color: "#ff9500", opacity: 0.7 }}
-      >
-        MARCH 27, 2026 — 9:00 PM IST
-      </p>
+      {/* Cat image space on right */}
+      <div className="w-1/3 h-1/2 flex items-center justify-end">
+        <Image
+          src="/images/twocats.png"
+          alt="Countdown Cat"
+          width={600}
+          height={600}
+          className="object-contain"
+          style={{ zIndex: 2 }}
+        />
+      </div>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 // ── Floating particle positions (seeded for SSR consistency) ──
 const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
@@ -134,6 +135,26 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       style={{ zIndex: 1 }}
     >
+      {/* Cat image on right side, covering 1/4th of the page */}
+   <Image
+  src="/images/hand2.png"
+  alt="hand Right Side"
+  width={400} // Increased for better resolution
+  height={400}
+  className="absolute top-0 right-0 w-1/4 h-auto object-contain"
+  style={{ zIndex: 3 }}
+/>
+
+  <Image
+  src="/images/cathand2.png"
+  alt="Cat left Side"
+  width={400} // Increased for better resolution
+  height={400}
+  className="absolute bottom-0 left-0 w-1/4 h-auto object-contain"
+  style={{ zIndex: 3 }}
+/>
+
+
       {/* ── Background gradient overlay ── */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -162,11 +183,9 @@ export default function HeroSection() {
 
       {/* ── Header badges ── */}
       <div className="absolute top-6 left-6 right-6 flex justify-between items-center z-10">
-        <span
-          className="font-pixel text-[0.45rem] tracking-wider opacity-70"
-          style={{ color: "#ff6b00" }}
-        >
-          SINGULARITY LAB | SRM UNIVERSITY AP
+        <span className="flex items-center gap-2 font-pixel text-[0.9rem] tracking-wider opacity-70" style={{ color: "#ffffff" }}>
+          <Image src="/logos/Lab.png" alt="Lab Logo" width={40} height={40} className="inline-block w-10 h-10" />
+          SINGULARITY STUDENT LAB
         </span>
         <span
           className="font-pixel text-[0.45rem] tracking-wider opacity-70"
@@ -179,7 +198,7 @@ export default function HeroSection() {
           EST. 2026
         </span>
       </div>
-
+          
       {/* ── Main content ── */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pt-16">
 
@@ -187,10 +206,10 @@ export default function HeroSection() {
         <h1
           ref={missionRef}
           data-text="MISSION"
-          className="glitch-text font-pixel glow-orange opacity-0"
+          className="font-pixel opacity-0"
           style={{
             fontSize: "clamp(2.5rem, 8vw, 5.5rem)",
-            color: "#ff6b00",
+            color: "#ddffff",
             letterSpacing: "0.05em",
             lineHeight: 1.1,
             willChange: "transform, opacity",
@@ -233,13 +252,13 @@ export default function HeroSection() {
         />
 
         {/* ── CSS Pixel Cat ── */}
-        <div
+        {/* <div
           ref={catRef}
           className="pixel-cat-container my-10 opacity-0"
           style={{ animation: "floatCat 6s ease-in-out infinite", willChange: "transform" }}
         >
           <div className="pixel-cat" />
-        </div>
+        </div> */}
 
         {/* Date */}
         <p

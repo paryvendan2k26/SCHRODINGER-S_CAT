@@ -126,7 +126,6 @@ export default function TimelineSection() {
       <div className="py-16 px-4 text-center">
         <span className="font-vt323 block tracking-widest mb-2"
           style={{ fontSize: "1.2rem", color: "#ff6b00", opacity: 0.7 }}>
-          // SECTION 04
         </span>
         <h2 className="font-pixel glow-cyan"
           style={{ fontSize: "clamp(0.8rem, 2.5vw, 1.5rem)", color: "#00ffff" }}>

@@ -80,7 +80,6 @@ export default function TracksSection() {
         <div className="text-center mb-14">
           <span className="font-vt323 block tracking-widest mb-2"
             style={{ fontSize: "1.2rem", color: "#ff6b00", opacity: 0.7 }}>
-            // SECTION 05
           </span>
           <h2 className="font-pixel"
             style={{
