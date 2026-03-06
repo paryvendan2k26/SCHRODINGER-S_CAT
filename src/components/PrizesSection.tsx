@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
+import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const PRIZES = [
-  { rank: "WINNER", amount: "₹1,00,000", detail: "Cash + Certificate", cat: "/images/cat.png", crazy: "Quantum leap! You broke the box and found the cat alive!", trophy: "/images/t1.png" },
+  { rank: "GRAND WINNER", amount: "₹1,00,000", detail: "Cash + Certificate", cat: "/images/cat.png", crazy: "Quantum leap! You broke the box and found the cat alive!", trophy: "/images/t1.png" },
   { rank: "1ST RUNNER UP", amount: "₹50,000", detail: "Cash + Certificate", cat: "/images/cat.png", crazy: "Almost there! You nearly collapsed the wave function!", trophy: "/images/t2.png" },
   { rank: "2ND RUNNER UP", amount: "₹25,000", detail: "Cash + Certificate", cat: "/images/cat.png", crazy: "Entangled with greatness! You’re a quantum runner!", trophy: "/images/t3.png" },
   { rank: "3RD RUNNER UP", amount: "₹10,000", detail: "Cash + Certificate", cat: "/images/cat.png", crazy: "Superposition specialist! You’re both winner and runner!", trophy: "/images/t4.png" },
@@ -12,6 +13,8 @@ const PRIZES = [
   { rank: "BEST HARDWARE", amount: "₹5,000", detail: "Track Prize", cat: "/images/cat.png", crazy: "You built a device that could measure the cat’s fate!", trophy: "/images/t4.png" },
   { rank: "BEST AI/ML", amount: "₹5,000", detail: "Track Prize", cat: "/images/cat.png", crazy: "Your AI predicted the cat’s future!", trophy: "/images/t4.png" },
 ];
+
+
 
 type Prize = {
   rank: string;
@@ -24,6 +27,7 @@ type Prize = {
 
 export default function PrizesSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
     <section
@@ -47,79 +51,62 @@ export default function PrizesSection() {
             REWARDS & PRIZES
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-8">
-          {/* Row 1: Winner */}
-          <PrizeCard prize={PRIZES[0]} fullWidth />
-          {/* Row 2: 1st runner up */}
-          <PrizeCard prize={PRIZES[1]} fullWidth />
-          {/* Row 3: 2nd & 3rd runner up */}
-          <div className="flex flex-row gap-8 w-full">
-            <PrizeCard prize={PRIZES[2]} fullWidth />
-            <PrizeCard prize={PRIZES[3]} fullWidth />
+        <div className="flex flex-row gap-0 w-full overflow-x-auto items-center">
+          <div className="flex-shrink-0 mr-6">
+            {/* Add your left photo here, e.g.: */}
+            {/* <Image src="/images/trophy-left.png" alt="Left Photo" width={80} height={80} className="rounded-full" /> */}
           </div>
-          {/* Row 4: 3 track prizes */}
-          <div className="flex flex-row gap-8 w-full">
-            <PrizeCard prize={PRIZES[4]} fullWidth />
-            <PrizeCard prize={PRIZES[5]} fullWidth />
-            <PrizeCard prize={PRIZES[6]} fullWidth />
-          </div>
+          {PRIZES.map((prize, idx) => (
+            <TicketPrizeCard
+              key={prize.rank}
+              prize={prize}
+              open={openIdx === idx}
+              onTap={() => setOpenIdx(openIdx === idx ? null : idx)}
+            />
+          ))}
+        </div>
+        <div className="w-full flex justify-center mt-12">
+          {/* Add your round thread image here, e.g.: */}
+          {/* <Image src="/images/thread.png" alt="Thread" width={120} height={120} className="rounded-full" /> */}
         </div>
       </div>
+
     </section>
   );
 }
 
-function PrizeCard({ prize, fullWidth }: { prize: Prize; fullWidth?: boolean }) {
-  // Determine trophy space size
-  const isMainPrize = ["WINNER", "1ST RUNNER UP", "2ND RUNNER UP", "3RD RUNNER UP"].includes(prize.rank);
+function TicketPrizeCard({ prize, open, onTap }: { prize: Prize; open: boolean; onTap: () => void }) {
   return (
     <div
-      className={`relative rounded-xl p-6 pixel-border transition-all duration-300 bg-black bg-opacity-80 flex flex-row items-start`}
+      className={`relative flex flex-row items-center bg-white border border-gray-300 ticket-shadow transition-all duration-300 cursor-pointer ${open ? "z-20 scale-105" : "z-10 scale-100"}`}
       style={{
-        width: fullWidth ? "100%" : undefined,
-        minWidth: fullWidth ? undefined : 220,
-        minHeight: 180,
-        boxShadow: "0 0 20px #ff00ff",
+        minWidth: open ? 340 : 220,
+        maxWidth: 420,
+        marginLeft: "-32px",
+        borderRadius: "48px",
+        boxShadow: open ? "0 8px 32px rgba(0,0,0,0.12)" : "0 2px 8px rgba(0,0,0,0.08)",
+        padding: open ? "32px 24px" : "16px 12px",
+        overflow: "visible",
       }}
+      onClick={onTap}
     >
-      {/* Trophy image space (left side of card) */}
-      <div className={isMainPrize ? "min-w-[80px] flex flex-col items-start justify-start mr-4" : "min-w-[48px] flex flex-col items-start justify-start mr-4"}>
-        <Image src={prize.trophy} alt="Trophy" width={isMainPrize ? 64 : 32} height={isMainPrize ? 64 : 32} className="mb-2" />
+      {/* Removed black circles (notched edges) */}
+      <div className="flex flex-col items-center justify-center mr-4">
+        <Image src={prize.trophy} alt="Trophy" width={open ? 64 : 32} height={open ? 64 : 32} className="mb-2" />
       </div>
-      {/* Card content */}
       <div className="flex-1">
-        {/* Cat image in corner */}
-        <Image
-          src={prize.cat}
-          alt="Cat"
-          width={48}
-          height={48}
-          className="absolute bottom-2 right-2 w-12 h-12"
-        />
-        <div
-          className="font-pixel text-lg mb-2"
-          style={{ color: "#ff00ff" }}
-        >
-          {prize.rank}
-        </div>
-        <div className="mt-4">
-          <div
-            className="font-pixel text-xl mb-2"
-            style={{ color: "#ffffff" }}
-          >
-            {prize.amount}
-          </div>
-          <div
-            className="font-vt323 text-md mb-2"
-            style={{ color: "#e8e8ff", opacity: 0.8 }}
-          >
-            {prize.detail}
-          </div>
+        <div className="font-pixel text-lg mb-2" style={{ color: "#ff00ff" }}>{prize.rank}</div>
+        <div className="font-pixel text-xl mb-2" style={{ color: "#222" }}>{prize.amount}</div>
+        <div className="font-vt323 text-md mb-2" style={{ color: "#444", opacity: 0.8 }}>{prize.detail}</div>
+        {open && (
           <div className="font-vt323 text-sm mt-2" style={{ color: '#ffd700', fontWeight: 600 }}>
             {prize.crazy}
           </div>
-        </div>
+        )}
       </div>
+      <Image src={prize.cat} alt="Cat" width={open ? 48 : 32} height={open ? 48 : 32} className="ml-4" />
     </div>
   );
 }
+
+

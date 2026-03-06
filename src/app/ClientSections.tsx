@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import Image from "next/image";
+import OrganizersSection from "@/components/OrganizersSection";
+import KeynoteSpeakerSection from "@/components/KeynoteSpeakerSection";
 
 const StarfieldCanvas   = dynamic(() => import("@/components/StarfieldCanvas"),   { ssr: false });
 const CountdownSection  = dynamic(() => import("@/components/CountdownSection"),  { ssr: false });
@@ -86,39 +88,6 @@ function SponsorsSection() {
   );
 }
 
-// Organizers Section
-function OrganizersSection() {
-  const organizers = [
-    { name: "Jayanth Ramakrishnan", role: "Event Coordinator", photo: "/photos/jayanth.jpg" },
-    { name: "Parvendan R", role: "Event Coordinator", photo: "/photos/parvendan.jpg" },
-    { name: "Aditi Sharma", role: "Core Team", photo: "/photos/aditi.jpg" },
-    { name: "Rahul Singh", role: "Core Team", photo: "/photos/rahul.jpg" },
-    { name: "Priya Patel", role: "Core Team", photo: "/photos/priya.jpg" },
-    { name: "Siddharth Rao", role: "Core Team", photo: "/photos/siddharth.jpg" },
-  ];
-  return (
-    <section className="relative py-24 px-4" style={{ zIndex: 1, background: "rgba(0,0,0,0.97)" }}>
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="font-vt323 block tracking-widest mb-2" style={{ fontSize: "1.2rem", color: "#ff6b00", opacity: 0.7 }}>{"// SECTION — ORGANIZERS"}</span>
-          <h2 className="font-pixel" style={{ fontSize: "clamp(0.8rem, 2.5vw, 1.5rem)", color: "#ff00ff" }}>
-            MEET THE CORE TEAM
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {organizers.map((org) => (
-            <div key={org.name} className="rounded-xl p-6 flex flex-col items-center justify-center pixel-border" style={{ background: "rgba(10,0,20,0.8)", boxShadow: `0 0 20px #ff6b00` }}>
-              <Image src={org.photo} alt={org.name + " photo"} width={96} height={96} className="w-24 h-24 rounded-full object-cover mb-4" style={{ filter: "drop-shadow(0 0 8px #ff6b00)" }} />
-              <div className="font-pixel text-lg mb-2" style={{ color: "#ff6b00" }}>{org.name}</div>
-              <div className="font-vt323 text-sm" style={{ color: "#e8e8ff", opacity: 0.7 }}>{org.role}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export default function ClientSections() {
   return (
     <>
@@ -133,12 +102,14 @@ export default function ClientSections() {
           <AboutSection />
           {/* SECTION 4 — Prizes */}
           <PrizesSection />
+          {/* Keynote Speaker Section */}
+          <KeynoteSpeakerSection />
           {/* Sponsors Section */}
           <SponsorsSection />
           {/* Eligibility & FAQ */}
           <EligibilitySection />
           <FAQSection />
-          {/* Organizers Section */}
+          {/* Organizers Section above Footer */}
           <OrganizersSection />
           {/* Contact & Footer */}
           <ContactFooter />
