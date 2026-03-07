@@ -24,39 +24,34 @@ export default function HeroSection() {
   const dividerRef  = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Dynamic GSAP import
     const loadGSAP = async () => {
       const { gsap } = await import("gsap");
       const { TextPlugin } = await import("gsap/TextPlugin");
       gsap.registerPlugin(TextPlugin);
 
-      // ── 1. Reveal starfield canvas ──
       const canvas = document.getElementById("starfield-canvas");
       if (canvas) gsap.to(canvas, { opacity: 1, duration: 1.2, ease: "power2.out" });
 
-      // ── Master timeline ──
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      // 2. MISSION drops in
+      // 1. MISSION drops in (Solid Pink, No Shadow)
       tl.fromTo(
         missionRef.current,
         { y: -120, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8 }
       );
 
-      // 3. Glitch on MISSION (fires once)
+      // 2. Subtle movement glitch (No Glow)
       tl.to(missionRef.current, {
         keyframes: [
-          { textShadow: "4px 0 #00ffff, -4px 0 #ff00ff", duration: 0.05 },
-          { textShadow: "-4px 0 #00ffff, 4px 0 #ff00ff", duration: 0.05 },
-          { textShadow: "4px 2px #ff6b00, -4px -2px #00ffff", duration: 0.05 },
-          { textShadow: "0 0 20px #ff6b00, 0 0 40px #ff6b00", duration: 0.1 },
+          { x: 3, duration: 0.05 },
+          { x: -3, duration: 0.05 },
+          { x: 0, duration: 0.05 },
         ],
         repeat: 2,
-        yoyo: true,
       });
 
-      // 4. SCHRÖDINGER'S CAT fades up
+      // 3. SCHRÖDINGER'S CAT fades up
       tl.fromTo(
         schroRef.current,
         { y: 30, opacity: 0 },
@@ -64,7 +59,7 @@ export default function HeroSection() {
         "-=0.3"
       );
 
-      // 5. Divider draws
+      // 4. Divider draws
       tl.fromTo(
         dividerRef.current,
         { scaleX: 0 },
@@ -72,7 +67,7 @@ export default function HeroSection() {
         "-=0.2"
       );
 
-      // 6. Subtitle types in
+      // 5. Subtitle types in
       tl.to(
         subtitleRef.current,
         {
@@ -83,15 +78,7 @@ export default function HeroSection() {
         "-=0.1"
       );
 
-      // 7. Cat floats in
-      tl.fromTo(
-        catRef.current,
-        { y: 60, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
-        "-=0.5"
-      );
-
-      // 8. Prize box bounces in
+      // 6. Prize box bounces in
       tl.fromTo(
         prizeRef.current,
         { scale: 0.4, opacity: 0 },
@@ -99,7 +86,7 @@ export default function HeroSection() {
         "-=0.3"
       );
 
-      // 9. Button fades in
+      // 7. Button fades in
       tl.fromTo(
         btnRef.current,
         { opacity: 0, y: 10 },
@@ -109,23 +96,6 @@ export default function HeroSection() {
     };
 
     loadGSAP();
-
-    // ── Glitch on hover (MISSION) ──
-    const el = missionRef.current;
-    const handleHoverGlitch = async () => {
-      const { gsap } = await import("gsap");
-      gsap.to(el, {
-        keyframes: [
-          { textShadow: "5px 0 #00ffff, -5px 0 #ff00ff", duration: 0.06 },
-          { textShadow: "-5px 0 #ff00ff, 5px 0 #00ffff", duration: 0.06 },
-          { textShadow: "0 0 20px #ff6b00", duration: 0.08 },
-        ],
-        repeat: 3,
-        yoyo: true,
-      });
-    };
-    el?.addEventListener("mouseenter", handleHoverGlitch);
-    return () => el?.removeEventListener("mouseenter", handleHoverGlitch);
   }, []);
 
   return (
@@ -135,25 +105,24 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       style={{ zIndex: 1 }}
     >
-      {/* Cat image on right side, covering 1/4th of the page */}
-   <Image
-  src="/images/hand2.png"
-  alt="hand Right Side"
-  width={400} // Increased for better resolution
-  height={400}
-  className="absolute top-0 right-0 w-1/4 h-auto object-contain"
-  style={{ zIndex: 3 }}
-/>
+      {/* ── Fixed Images ── */}
+      <Image
+        src="/images/h1.png"
+        alt="hand Right Side"
+        width={400}
+        height={400}
+        className="absolute top-0 right-0 w-1/4 h-auto object-contain pointer-events-none"
+        style={{ zIndex: 3 }}
+      />
 
-  <Image
-  src="/images/cathand2.png"
-  alt="Cat left Side"
-  width={400} // Increased for better resolution
-  height={400}
-  className="absolute bottom-0 left-0 w-1/4 h-auto object-contain"
-  style={{ zIndex: 3 }}
-/>
-
+      <Image
+        src="/images/c1.png"
+        alt="Cat left Side"
+        width={400}
+        height={400}
+        className="absolute bottom-0 left-0 w-1/4 h-auto object-contain pointer-events-none"
+        style={{ zIndex: 3 }}
+      />
 
       {/* ── Background gradient overlay ── */}
       <div
@@ -202,16 +171,16 @@ export default function HeroSection() {
       {/* ── Main content ── */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pt-16">
 
-        {/* MISSION */}
+        {/* MISSION: Solid Pink, No Glow */}
         <h1
           ref={missionRef}
-          data-text="MISSION"
           className="font-pixel opacity-0"
           style={{
             fontSize: "clamp(2.5rem, 8vw, 5.5rem)",
-            color: "#ddffff",
+            color: "#ff00ff", 
             letterSpacing: "0.05em",
             lineHeight: 1.1,
+            textShadow: "none",
             willChange: "transform, opacity",
           }}
         >
@@ -251,15 +220,6 @@ export default function HeroSection() {
           }}
         />
 
-        {/* ── CSS Pixel Cat ── */}
-        {/* <div
-          ref={catRef}
-          className="pixel-cat-container my-10 opacity-0"
-          style={{ animation: "floatCat 6s ease-in-out infinite", willChange: "transform" }}
-        >
-          <div className="pixel-cat" />
-        </div> */}
-
         {/* Date */}
         <p
           className="font-rajdhani text-sm tracking-widest mb-6 opacity-70"
@@ -293,7 +253,7 @@ export default function HeroSection() {
         <a
           id="register"
           ref={btnRef}
-          href="https://unstop.com"
+          href="https://unstop.com/hackathons/mission-schrodingers-cat-srm-university-srmap-andhra-pradesh-1645488?lb=jL5dS6qk"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-pixel opacity-0 mb-16"

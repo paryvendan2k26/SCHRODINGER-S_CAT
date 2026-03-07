@@ -11,7 +11,7 @@ export default function KeynoteSpeakerSection() {
           <h2 className="font-pixel" style={{ fontSize: 'clamp(1rem, 3vw, 2rem)', color: '#ffd700' }}>Special Guest</h2>
         </div>
         <div className="flex flex-row items-center bg-white rounded-3xl shadow-lg border border-gray-300 p-8 w-full max-w-4xl mx-auto">
-          <Image src="/photos/keynote.png" alt="Keynote Speaker" width={120} height={120} className="rounded-full mr-8" />
+          <Image src="/photos/rambabu.png" alt="Keynote Speaker" width={120} height={120} className="rounded-full mr-8" />
           <div className="flex-1">
             <div className="font-pixel text-xl mb-2" style={{ color: '#ff00ff' }}>Dr. Quantum Singh</div>
             <div className="font-vt323 text-md mb-2" style={{ color: '#444', opacity: 0.8 }}>
