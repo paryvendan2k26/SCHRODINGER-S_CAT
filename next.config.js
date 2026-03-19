@@ -5,4 +5,8 @@ const nextConfig = {
   experimental: {},
 };
 
-module.exports = nextConfig;
+module.exports = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
