@@ -258,7 +258,7 @@ export default function HeroSection() {
           rel="noopener noreferrer"
           className="btn-pixel opacity-0 mb-16"
         >
-          ▶ REGISTER NOW
+          ▶ REGISTRATION CLOSED
         </a>
       </div>
 

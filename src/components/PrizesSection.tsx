@@ -8,6 +8,7 @@ const PRIZES = [
   { rank: "1ST RUNNER UP", amount: "₹50,000", color: "#00ffff", crazy: "Almost there! You nearly collapsed the wave function!", trophy: "/images/t2.png", detail: "Cash + Certificate" },
   { rank: "2ND RUNNER UP", amount: "₹25,000", color: "#ff00ff", crazy: "Entangled with greatness! You’re a quantum runner!", trophy: "/images/t3.png", detail: "Cash + Certificate" },
   { rank: "3RD RUNNER UP", amount: "₹10,000", color: "#ff6b00", crazy: "Superposition specialist! You’re winner and runner!", trophy: "/images/t4.png", detail: "Cash + Certificate" },
+    { rank: "BEST BLOCKCHAIN", amount: "₹5,000", color: "#ffd700", crazy: "Chain of Trust, Fair and Just.", trophy: "/images/t4.png", detail: "Track Prize" },
   { rank: "BEST UI/UX", amount: "₹5,000", color: "#ff00ff", crazy: "Your interface is so smooth, even the cat purrs!", trophy: "/images/t4.png", detail: "Track Prize" },
   { rank: "BEST HARDWARE", amount: "₹5,000", color: "#00ffff", crazy: "You built a device that measured the cat’s fate!", trophy: "/images/t4.png", detail: "Track Prize" },
   { rank: "BEST AI/ML", amount: "₹5,000", color: "#ffd700", crazy: "Your AI predicted the cat’s future!", trophy: "/images/t4.png", detail: "Track Prize" },

@@ -35,6 +35,10 @@ export default function ContactFooter() {
               <FaLinkedin size={32} className="mb-2" />
               <span className="font-rajdhani text-base">LinkedIn</span>
             </a>
+                        <a href="https://singularitylabsrmap.space/" target="_blank" rel="noopener" className="flex flex-col items-center justify-center bg-[#23232b] rounded-xl border border-gray-700 py-6 px-4 hover:bg-[#31313a] transition">
+          <Image src="/logos/Lab.png" alt="Lab Logo" width={40} height={40} className="inline-block w-10 h-10" />
+              <span className="font-rajdhani text-base">Singularity</span>
+            </a>
           </div>
         </div>
       </div>
