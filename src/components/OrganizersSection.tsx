@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 const CORE_TEAM = [
-  { name: "Jayanth Ramakrishnan", role: "Event Lead", email: "jayanth_ramakrishnan@srmap.edu.in", photo: "/photos/jayanth.jpeg", linkedin: "#", instagram: "#" },
+  { name: "Jayanth Ramakrishnan", role: "Event Lead", email: "jayanth_ramakrishnan@srmap.edu.in", photo: "/photos/jayanth1.jpeg", linkedin: "#", instagram: "#" },
   { name: "Parvendan R", role: "Event Co-Lead", email: "parvendan_r@srmap.edu.in", photo: "/photos/parvendan.jpeg", linkedin: "#", instagram: "#" },
   { name: "Dr Priyanka", role: "Advisor", email: "priyanka.s@srmap.edu.in", photo: "/photos/priyanka.png", linkedin: "#", instagram: "#" },
   { name: "Abir Krishna Banerjee", role: "Core Team", email: "abirkrishna_banerjee@srmap.edu.in", photo: "/photos/Abir.jpg", linkedin: "#", instagram: "#" },
