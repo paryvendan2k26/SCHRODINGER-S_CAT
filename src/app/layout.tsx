@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description:
     "36-Hour India's Biggest Student-Led Hackathon — March 27–29, 2026. SRM University AP, Amaravati. ₹25,00,000 Prize Pool.",
   keywords: ["hackathon", "SRM University AP", "Schrödinger", "Singularity Lab", "coding competition"],
+    icons: {
+    icon:"/images/cat.png ",
+  },
+
+  
 };
 
 export default function RootLayout({
