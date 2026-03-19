@@ -4,12 +4,12 @@ import Image from "next/image";
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 const CORE_TEAM = [
-  { name: "Jayanth Ramakrishnan", role: "Event Coordinator", email: "jayanth@example.com", photo: "/photos/jayanth.jpg", linkedin: "#", instagram: "#" },
-  { name: "Parvendan R", role: "Event Coordinator", email: "parvendan@example.com", photo: "/photos/parvendan.jpg", linkedin: "#", instagram: "#" },
-  { name: "Abir Krishna Banerjee", role: "Core Team", email: "abir@example.com", photo: "/photos/Abir.jpg", linkedin: "#", instagram: "#" },
-  { name: "Pradeep", role: "Core Team", email: "pradeep@example.com", photo: "/photos/Pradeep.jpg", linkedin: "#", instagram: "#" },
-  { name: "Priya Patel", role: "Core Team", email: "priya@example.com", photo: "/photos/priya.jpg", linkedin: "#", instagram: "#" },
-  { name: "Siddharth Rao", role: "Core Team", email: "sid@example.com", photo: "/photos/siddharth.jpg", linkedin: "#", instagram: "#" },
+  { name: "Jayanth Ramakrishnan", role: "Event Lead", email: "jayanth_ramakrishnan@srmap.edu.in", photo: "/photos/jayanth.jpeg", linkedin: "#", instagram: "#" },
+  { name: "Parvendan R", role: "Event Co-Lead", email: "parvendan_r@srmap.edu.in", photo: "/photos/parvendan.jpeg", linkedin: "#", instagram: "#" },
+  { name: "Dr Priyanka", role: "Advisor", email: "priyanka.s@srmap.edu.in", photo: "/photos/priyanka.png", linkedin: "#", instagram: "#" },
+  { name: "Abir Krishna Banerjee", role: "Core Team", email: "abirkrishna_banerjee@srmap.edu.in", photo: "/photos/Abir.jpg", linkedin: "#", instagram: "#" },
+  { name: "Pradeep", role: "Core Team", email: "prasanpradeep_chalamcharla@srmap.edu.in", photo: "/photos/Pradeep.jpg", linkedin: "#", instagram: "#" },
+  { name: "Lokesh K", role: "Core Team", email: "lokesh_k@srmap.edu.in", photo: "/photos/lokesh.jpeg", linkedin: "#", instagram: "#" },
 ];
 
 export default function OrganizersSection() {

@@ -19,7 +19,7 @@ function FAQSection() {
   const faqs = [
     { q: "Who can participate?", a: "All UG/PG students across India are eligible. Interdisciplinary teams are encouraged." },
     { q: "How do I register?", a: "Registration details will be announced soon via our website and social media." },
-    { q: "Is there a fee?", a: "No, participation is completely free for all eligible students." },
+    { q: "Is there a fee?", a: "Yes, 399/- per person" },
     { q: "Can I join solo?", a: "Teams must have 3–5 members. Join our Discord to find teammates!" },
     { q: "What is the duration?", a: "It's a 36-hour non-stop hackathon starting Friday evening." },
     { q: "Is it online?", a: "This is an in-person event. Venue details will be shared soon." },
@@ -85,41 +85,50 @@ function SponsorsSection() {
   const sponsors = [
     { logo: "/logos/ncpl.png" },
     { logo: "/logos/hrud.png" },
-    { logo: "/logos/platinum.png" },
-    { logo: "/logos/technical.png" },
-    { logo: "/logos/interviewbuddy.png" },
+    { logo: "/logos/hush.png" },
+    { logo: "/logos/codecrafters.png" },
+    { logo: "/logos/interview.png" },
     { logo: "/logos/flatlogic.png" },
   ];
 
-  return (
-    <section id="sponsors" className="relative py-16 px-4" style={{ zIndex: 1, background: "rgba(5,0,8,0.92)" }}>
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="font-pixel text-4xl" style={{ color: "#ffd700" }}>Sponsors</h2>
+return (
+  <section id="sponsors" className="relative py-16 px-4" style={{ zIndex: 1, background: "rgba(5,0,8,0.92)" }}>
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-12">
+        <h2 className="font-pixel text-4xl" style={{ color: "#ffd700" }}>Sponsors</h2>
+      </div>
+
+      <div className="flex flex-col gap-10 items-center">
+        {/* Title Sponsors */}
+        <div className="w-full flex flex-col items-center gap-4">
+          <p className="font-pixel text-sm tracking-widest uppercase" style={{ color: "#ffd700", opacity: 0.7 }}>
+            Title Sponsors
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <LogoCard src={sponsors[0].logo} sizeClass="w-72 h-36" />
+            <LogoCard src={sponsors[1].logo} sizeClass="w-72 h-36" />
+          </div>
         </div>
 
-        <div className="flex flex-col gap-6 items-center">
-          {/* Row 1: The Main Sponsor (Extra Large Card) */}
-          <div className="flex justify-center">
-            <LogoCard src={sponsors[0].logo} sizeClass="w-80 h-40" />
-          </div>
+        {/* Divider */}
+        <div className="w-full max-w-xl border-t" style={{ borderColor: "rgba(255,215,0,0.2)" }} />
 
-          {/* Row 2: Secondary Sponsors (Medium Cards) */}
+        {/* Partners */}
+        <div className="w-full flex flex-col items-center gap-4">
+          <p className="font-pixel text-sm tracking-widest uppercase" style={{ color: "#ffd700", opacity: 0.7 }}>
+            Partners
+          </p>
           <div className="flex flex-wrap justify-center gap-6">
-            <LogoCard src={sponsors[1].logo} sizeClass="w-60 h-32" />
-            <LogoCard src={sponsors[2].logo} sizeClass="w-60 h-32" />
-          </div>
-
-          {/* Row 3: All other Sponsors (Standard Cards) */}
-          <div className="flex flex-wrap justify-center gap-6">
+            <LogoCard src={sponsors[2].logo} sizeClass="w-52 h-28" />
             <LogoCard src={sponsors[3].logo} sizeClass="w-52 h-28" />
             <LogoCard src={sponsors[4].logo} sizeClass="w-52 h-28" />
             <LogoCard src={sponsors[5].logo} sizeClass="w-52 h-28" />
           </div>
         </div>
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
 
 export default function ClientSections() {

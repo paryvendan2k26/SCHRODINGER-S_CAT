@@ -13,12 +13,11 @@ export default function KeynoteSpeakerSection() {
         <div className="flex flex-row items-center bg-white rounded-3xl shadow-lg border border-gray-300 p-8 w-full max-w-4xl mx-auto">
           <Image src="/photos/rambabu.png" alt="Keynote Speaker" width={120} height={120} className="rounded-full mr-8" />
           <div className="flex-1">
-            <div className="font-pixel text-xl mb-2" style={{ color: '#ff00ff' }}>Dr. Quantum Singh</div>
+            <div className="font-pixel text-xl mb-2" style={{ color: '#ff00ff' }}>Dr. Rambabu Vasupilli</div>
             <div className="font-vt323 text-md mb-2" style={{ color: '#444', opacity: 0.8 }}>
-              Renowned quantum physicist, TEDx speaker, and author. Dr. Singh will share insights on innovation, quantum computing, and the future of technology.
-            </div>
+An entrepreneur, technologist, and career mentor with 20+ years of experience, he has guided thousands of professionals globally. As Founder & CEO of NCPL Group, he focuses on innovation, mentorship, and helping individuals build successful careers in modern digital technologies.            </div>
             <div className="font-vt323 text-sm mt-2" style={{ color: '#ffd700', fontWeight: 600 }}>
-              &quot;Unlocking the mysteries of the universe, one qubit at a time.&quot;
+              &quot;Building businesses. Mentoring minds. Balancing tradition and innovation.&quot;
             </div>
           </div>
         </div>
