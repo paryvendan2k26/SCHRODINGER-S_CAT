@@ -31,7 +31,7 @@ export default function ContactFooter() {
               <FaInstagram size={32} className="mb-2" />
               <span className="font-rajdhani text-base">Instagram</span>
             </a>
-            <a href="https://www.linkedin.com/company/the-singularity-advanced-research-lab-srmap/" target="_blank" rel="noopener" className="flex flex-col items-center justify-center bg-[#23232b] rounded-xl border border-gray-700 py-6 px-4 hover:bg-[#31313a] transition">
+            <a href="https://www.linkedin.com/company/singularity-student-lab-srmap/" target="_blank" rel="noopener" className="flex flex-col items-center justify-center bg-[#23232b] rounded-xl border border-gray-700 py-6 px-4 hover:bg-[#31313a] transition">
               <FaLinkedin size={32} className="mb-2" />
               <span className="font-rajdhani text-base">LinkedIn</span>
             </a>
