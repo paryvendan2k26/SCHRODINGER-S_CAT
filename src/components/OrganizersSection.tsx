@@ -4,14 +4,55 @@ import Image from "next/image";
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 const CORE_TEAM = [
-  { name: "Jayanth Ramakrishnan", role: "Event Lead", email: "jayanth_ramakrishnan@srmap.edu.in", photo: "/photos/jayanth1.jpeg", linkedin: "#", instagram: "#" },
-  { name: "Parvendan R", role: "Event Co-Lead", email: "parvendan_r@srmap.edu.in", photo: "/photos/parvendan.jpeg", linkedin: "#", instagram: "#" },
-  { name: "Dr Priyanka", role: "Advisor", email: "priyanka.s@srmap.edu.in", photo: "/photos/priyanka.png", linkedin: "#", instagram: "#" },
-  { name: "Abir Krishna Banerjee", role: "Core Team", email: "abirkrishna_banerjee@srmap.edu.in", photo: "/photos/Abir.jpg", linkedin: "#", instagram: "#" },
-  { name: "Pradeep", role: "Core Team", email: "prasanpradeep_chalamcharla@srmap.edu.in", photo: "/photos/Pradeep.jpg", linkedin: "#", instagram: "#" },
-  { name: "Lokesh K", role: "Core Team", email: "lokesh_k@srmap.edu.in", photo: "/photos/lokesh.jpeg", linkedin: "#", instagram: "#" },
+  { 
+    name: "Jayanth Ramakrishnan", 
+    role: "Event Lead", 
+    email: "jayanth_ramakrishnan@srmap.edu.in", 
+    photo: "/photos/jayanth1.jpeg", 
+    linkedin: "https://www.linkedin.com/in/jayanth-ramakrishnan/", 
+    instagram: "https://www.instagram.com/thejayanthramakrishnan/" 
+  },
+  { 
+    name: "Parvendan R", 
+    role: "Event Co-Lead", 
+    email: "parvendan_r@srmap.edu.in", 
+    photo: "/photos/parvendan.jpeg", 
+    linkedin: "https://www.linkedin.com/in/parvendan-rangasamy/", 
+    instagram: "https://www.instagram.com/pary_vendan1528/" 
+  },
+  { 
+    name: "Dr Priyanka", 
+    role: "Advisor", 
+    email: "priyanka.s@srmap.edu.in", 
+    photo: "/photos/priyanka.png", 
+    linkedin: "https://www.linkedin.com/in/priyanka-singh-b99b40158/", 
+    instagram: "#" 
+  },
+  { 
+    name: "Abir Krishna Banerjee", 
+    role: "Core Team", 
+    email: "abirkrishna_banerjee@srmap.edu.in", 
+    photo: "/photos/Abir.jpg", 
+    linkedin: "https://www.linkedin.com/in/abir-krishna-banerjee-a4300b27b/", 
+    instagram: "https://www.instagram.com/hlwamabir/" 
+  },
+  { 
+    name: "Pradeep", 
+    role: "Core Team", 
+    email: "prasanpradeep_chalamcharla@srmap.edu.in", 
+    photo: "/photos/Pradeep.jpg", 
+    linkedin: "https://www.linkedin.com/in/pradeep-chalamcharla-95a343325/", 
+    instagram: "https://www.instagram.com/pradeep_chalamcharla/" 
+  },
+  { 
+    name: "Lokesh K", 
+    role: "Core Team", 
+    email: "lokesh_k@srmap.edu.in", 
+    photo: "/photos/lokesh.jpeg", 
+    linkedin: "https://www.linkedin.com/in/lokeshkatragadda/", 
+    instagram: "https://www.instagram.com/lowkezh/" 
+  },
 ];
-
 export default function OrganizersSection() {
   // Double the team array for the infinite loop
   const duplicatedTeam = [...CORE_TEAM, ...CORE_TEAM];
