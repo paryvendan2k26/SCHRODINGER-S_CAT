@@ -69,7 +69,12 @@ function FAQSection() {
   );
 }
 // A reusable Card component to keep your code clean
-const LogoCard = ({ src, sizeClass = "w-48 h-24" }) => (
+type LogoCardProps = {
+  src: string;
+  sizeClass?: string;
+};
+
+const LogoCard = ({ src, sizeClass = "w-48 h-24" }: LogoCardProps) => (
   <div className={`${sizeClass} flex items-center justify-center bg-white border border-white rounded-xl p-4 hover:bg-white transition-all duration-300 shadow-lg`}>
     <Image 
       src={src} 
