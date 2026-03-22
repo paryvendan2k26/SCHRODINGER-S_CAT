@@ -94,6 +94,7 @@ function SponsorsSection() {
     { logo: "/logos/codecrafters.png" },
     { logo: "/logos/interview.png" },
     { logo: "/logos/flatlogic.png" },
+        { logo: "/logos/zsecurity.png" },
   ];
 
 return (
@@ -128,6 +129,7 @@ return (
             <LogoCard src={sponsors[3].logo} sizeClass="w-52 h-28" />
             <LogoCard src={sponsors[4].logo} sizeClass="w-52 h-28" />
             <LogoCard src={sponsors[5].logo} sizeClass="w-52 h-28" />
+                        <LogoCard src={sponsors[6].logo} sizeClass="w-52 h-28" />
           </div>
         </div>
       </div>

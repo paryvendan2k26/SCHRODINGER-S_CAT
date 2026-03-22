@@ -19,32 +19,32 @@ export default function PrizesSection() {
   const spinRef = useRef(null); // Ref for the 360 spinning
   const tiltRef = useRef(null); // Ref for the interactive tilting
 
-  useEffect(() => {
-    const loadGSAP = async () => {
-      const { gsap } = await import("gsap");
+  // useEffect(() => {
+  //   const loadGSAP = async () => {
+  //     const { gsap } = await import("gsap");
 
-      // 1. CONSTANT 360 SPIN
-      if (spinRef.current) {
-        gsap.to(spinRef.current, {
-          rotation: 360,
-          duration: 8, // Adjust speed here (higher = slower)
-          repeat: -1,
-          ease: "none",
-        });
-      }
+  //     // 1. CONSTANT 360 SPIN
+  //     if (spinRef.current) {
+  //       gsap.to(spinRef.current, {
+  //         rotation: 360,
+  //         duration: 8, // Adjust speed here (higher = slower)
+  //         repeat: -1,
+  //         ease: "none",
+  //       });
+  //     }
 
-      // 2. INTERACTIVE TILT (Reaction to Prize)
-      if (tiltRef.current) {
-        const tiltY = (activeIdx - 3) * 10;
-        gsap.to(tiltRef.current, {
-          y: tiltY,
-          duration: 0.6,
-          ease: "power2.out",
-        });
-      }
-    };
-    loadGSAP();
-  }, [activeIdx]);
+  //     // 2. INTERACTIVE TILT (Reaction to Prize)
+  //     if (tiltRef.current) {
+  //       const tiltY = (activeIdx - 3) * 10;
+  //       gsap.to(tiltRef.current, {
+  //         y: tiltY,
+  //         duration: 0.6,
+  //         ease: "power2.out",
+  //       });
+  //     }
+  //   };
+  //   loadGSAP();
+  // }, [activeIdx]);
 
   return (
     <section className="relative py-24 px-4 overflow-hidden" style={{ background: "rgba(5,0,10,0.98)" }}>
